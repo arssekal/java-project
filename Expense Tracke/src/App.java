@@ -1,6 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.time.LocalDate;
 import java.util.Scanner;
 
 public class App {
@@ -23,7 +20,7 @@ public class App {
             } 
             // update an expense.
             else if (userChoice == 2) {
-                System.out.println("enter the id of the expense: ");
+                System.out.print("enter the id of the expense: ");
                 int id = scan.nextInt();
                 scan.nextLine();
                 tracker.updateExpense(id);
@@ -31,6 +28,10 @@ public class App {
             }
             // delete an expense.
             else if (userChoice == 3) {
+                System.out.print("enter the id of the expense: ");
+                int id = scan.nextInt();
+                scan.nextLine();
+                tracker.deleteExpense(id);
                 userChoice = menu();
             }
             // view all expenses.
@@ -50,22 +51,24 @@ public class App {
     }
     private static int menu() {
         Scanner c = new Scanner(System.in);
-        System.out.println("-----------------------------------");
+        System.out.println("---------------------------------------------");
         System.out.println("1. add an expense");
         System.out.println("2. update an expense");
         System.out.println("3. delete an expense");
         System.out.println("4. view all expenses");
         System.out.println("5. view a summary of all expenses");
         System.out.println("6. exit");
-        System.out.println("-----------------------------------");
+        System.out.println("---------------------------------------------");
         System.out.print("enter your choice: ");
         return c.nextInt();
     }
     private static int view() {
         Scanner c = new Scanner(System.in);
+        System.out.println("---------------------------------------------");
         System.out.println("1. view a summary of all expenses");
         System.out.println("1. view a summary of all expenses for a specific month");
         System.out.println("3. exit");
+        System.out.println("---------------------------------------------");
         System.out.println("enter your choice: ");
         return c.nextInt();
     }

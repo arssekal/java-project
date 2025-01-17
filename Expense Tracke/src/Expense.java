@@ -1,13 +1,27 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.time.LocalDate;
 
 public class Expense {
-    static int autoIncrementId = 0;
+    static int autoIncrementId;
     private int id;
     private String description;
     private double amount;
     private LocalDate date;
 
     Expense(String desc, double amount) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("expense.csv"));
+            String line;
+            int i = 0;
+            while((line = reader.readLine()) != null) {
+                i++;
+            }
+            autoIncrementId = i;
+        }
+        catch (Exception e) {
+            // do something
+        }
         this.description = desc;
         this.amount = amount;
         this.date = LocalDate.now();
