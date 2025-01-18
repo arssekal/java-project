@@ -8,8 +8,10 @@ public class Expense {
     private String description;
     private double amount;
     private LocalDate date;
+    private String category;
 
-    Expense(String desc, double amount) {
+    
+    Expense(String desc, double amount, String category) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("expense.csv"));
             String line;
@@ -22,8 +24,9 @@ public class Expense {
         catch (Exception e) {
             // do something
         }
-        this.description = desc;
-        this.amount = amount;
+        setDescription(desc);
+        setAmount(amount);
+        setCategory(category);
         this.date = LocalDate.now();
         this.id = ++autoIncrementId;
     }
@@ -51,5 +54,12 @@ public class Expense {
     }
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+    public String getCategory() {
+        return category;
+    }
+    
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
