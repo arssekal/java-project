@@ -3,7 +3,7 @@ import java.io.FileReader;
 import java.time.LocalDate;
 
 public class Expense {
-    static int autoIncrementId;
+    static int autoIncrementId = 0;
     private int id;
     private String description;
     private double amount;

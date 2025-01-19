@@ -3,6 +3,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ExpenseTracker {
@@ -42,9 +43,23 @@ public class ExpenseTracker {
                 String[] update = new String[4]; // this will contain the information of the new updated line
                 String lineToUpdate = lines.get(id-1);
                 update = lineToUpdate.split(",");
-                System.out.print("Update description? (yes = 1, no = 0): ");
-                int choice = c.nextInt();
-                c.nextLine();
+                int choice = 0 ;
+                boolean valid = false;
+                do {
+                    try {
+                        System.out.print("Update description? (yes = 1, no = 0): ");
+                        choice  = c.nextInt();
+                        c.nextLine();
+                        if(choice == 0 || choice == 1) {
+                            valid = true;
+                        } else {
+                            System.out.println("choose 0 or 1.");
+                        }
+                    } catch (InputMismatchException e) {
+                        c.next(); // this to read the \n to avoid infinite loop
+                        System.out.println("your choice should be a number.");
+                    }
+                } while(!valid); 
                 update[0] = String.valueOf(id);
                 if (choice == 1) {
                     System.out.print("new description : ");
@@ -53,18 +68,44 @@ public class ExpenseTracker {
                     update[1] = description;
                     System.out.println("the description is updated succesfully");
                 }
-                System.out.print("Update amount? (yes = 1, no = 0): ");
-                choice = c.nextInt();
-                c.nextLine();
+                valid = false;
+                do {
+                    try {
+                        System.out.print("Update amount? (yes = 1, no = 0): ");
+                        choice  = c.nextInt();
+                        c.nextLine();
+                        if(choice == 0 || choice == 1) {
+                            valid = true;
+                        } else {
+                            System.out.println("choose 0 or 1.");
+                        }
+                    } catch (InputMismatchException e) {
+                        c.next(); // this to read the \n to avoid infinite loop
+                        System.out.println("your choice should be a number.");
+                    }
+                } while(!valid); 
                 if (choice == 1) {
                     System.out.print("new amount : ");
                     double amount = c.nextInt();
                     update[2] = String.valueOf(amount);
                     System.out.println("the amount is updated succesfully");
                 }
-                System.out.print("Update category? (yes = 1, no = 0): ");
-                choice = c.nextInt();
-                c.nextLine();
+                valid = false;
+                do {
+                    try {
+                        System.out.print("Update category? (yes = 1, no = 0): ");
+                        choice  = c.nextInt();
+                        c.nextLine();
+                        if(choice == 0 || choice == 1) {
+                            valid = true;
+                        } else {
+                            System.out.println("choose 0 or 1.");
+                        }
+                    } catch (InputMismatchException e) {
+                        c.next(); // this to read the \n to avoid infinite loop
+                        System.out.println("your choice should be a number.");
+                    }
+                } while(!valid); 
                 if (choice == 1) {
                     System.out.print("new category : ");
                     String category = c.nextLine();
